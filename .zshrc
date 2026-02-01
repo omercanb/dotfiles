@@ -1,5 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+if [[ -n $SSH_CONNECTION ]]; then
+    ZSH_THEME="af-magic"
+else
+    ZSH_THEME="robbyrussell"
+fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -81,11 +86,6 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    ZSH_THEME="af-magic"
-else
-    ZSH_THEME="robbyrussell"
-fi
 
 
 export EDITOR='nvim'
