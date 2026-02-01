@@ -1,4 +1,4 @@
-vim.cmd 'language en_US'
+-- vim.cmd 'language en_US'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
