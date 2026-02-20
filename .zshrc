@@ -95,9 +95,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 # Go
 export PATH="$HOME/go/bin:$PATH"
@@ -112,6 +112,26 @@ export PATH="$HOME/go/bin:$PATH"
 # END opam configuration
 fi
 # END Mac specific configuration
+#
+# https://stackoverflow.com/questions/45216663/how-to-automatically-activate-virtualenvs-when-cding-into-a-directory
+function cd() {
+  builtin cd "$@"
+
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+    ## If env folder is found then activate the vitualenv
+      if [[ -d ./.venv ]] ; then
+        source ./.venv/bin/activate
+      fi
+  else
+    ## check the current folder belong to earlier VIRTUAL_ENV folder
+    # if yes then do nothing
+    # else deactivate
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
+  fi
+}
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -124,6 +144,8 @@ alias sortrows="gawk '{for (i = 1; i <= NF; i++) {arr[i] = \$i}; asort(arr); for
 alias mv="mv -i"
 alias mv="mv -i"           # -i prompts before overwrite
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
+alias av="source .venv/bin/activate" # activate python venv
+alias cv="python3 -m venv .venv" # create venv
 
 # Vi in Terminal
 bindkey -v
@@ -131,3 +153,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export PATH="$HOME/.local/bin:$PATH"

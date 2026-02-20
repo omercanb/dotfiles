@@ -50,8 +50,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
       defaults = {
         file_ignore_patterns = {
           'node_modules',
+          '_build',
         },
       },
+      pickers = {
+        find_files = {
+          -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+          find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+        },
+      },
+
       -- defaults = {
       --   mappings = {
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },

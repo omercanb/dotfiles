@@ -37,6 +37,7 @@ return {
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
       c = { 'clang-format' },
+      python = { 'isort' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
