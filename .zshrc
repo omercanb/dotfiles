@@ -95,9 +95,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Go
 export PATH="$HOME/go/bin:$PATH"

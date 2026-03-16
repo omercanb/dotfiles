@@ -56,7 +56,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       pickers = {
         find_files = {
           -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-          find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+          -- find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
         },
       },
 
