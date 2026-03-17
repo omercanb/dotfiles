@@ -22,3 +22,21 @@ return {
   lazy = false,
   build = ':TSUpdate',
 }
+--
+-- A breaking update happened so we use the below now
+-- return {
+--   'nvim-treesitter/nvim-treesitter',
+--   lazy = false,
+--   build = ':TSUpdate',
+--   config = function()
+--     require('nvim-treesitter').install { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+--
+--     -- Enable highlighting per filetype
+--     vim.api.nvim_create_autocmd('FileType', {
+--       pattern = { 'bash', 'c', 'diff', 'html', 'lua', 'markdown', 'query', 'vim' },
+--       callback = function()
+--         vim.treesitter.start()
+--       end,
+--     })
+--   end,
+-- }
