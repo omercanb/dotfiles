@@ -146,6 +146,7 @@ alias mv="mv -i"           # -i prompts before overwrite
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias av="source .venv/bin/activate" # activate python venv
 alias cv="python3 -m venv .venv" # create venv
+alias corehere="ulimit -c unlimited && echo 'core' | sudo tee /proc/sys/kernel/core_pattern"
 
 # Vi in Terminal
 bindkey -v
