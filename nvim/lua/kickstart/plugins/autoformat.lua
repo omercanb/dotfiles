@@ -24,7 +24,7 @@ return {
         return nil
       else
         return {
-          timeout_ms = 500,
+          timeout_ms = 5000,
           lsp_format = 'fallback',
         }
       end
@@ -37,12 +37,21 @@ return {
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
       c = { 'clang-format' },
-      python = { 'isort' },
+      python = { 'isort', 'black' },
+      html = { 'prettierd', 'djlint' },
+      htmldjango = {'djlint'},
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
+    },
+  },
+  formatters = {
+    djlint = {
+      command = 'djlint',
+      args = { '--reformat', '-' },
+      stdin = true,
     },
   },
 }

@@ -12,6 +12,7 @@ return {
       automatic_enable = {
         exclude = {
           'jdtls',
+          'html',
         },
       },
     },
@@ -174,6 +175,19 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
+      tailwindcss = {
+        filetypes = { 'html', 'htmldjango', 'css', 'javascript', 'typescript' },
+      },
+      html = {
+        filetypes = { 'html', 'htmldjango' },
+        settings = {
+          html = {
+            format = {
+              templating = true,
+            },
+          },
+        },
+      },
       gopls = {
         settings = {
           gopls = {
@@ -233,7 +247,6 @@ return {
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       -- ts_ls = {},
       --
-
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
@@ -281,6 +294,16 @@ return {
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
+      },
+    }
+    require('lspconfig').html.setup {
+      capabilities = capabilities,
+      filetypes = { 'html', 'htmldjango' },
+      settings = {
+        autoClosingTags = false,
+        html = {
+          format = { templating = true },
+        },
       },
     }
   end,

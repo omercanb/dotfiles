@@ -95,3 +95,6 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 -- vim.opt.softtabstop = 2
 
 vim.lsp.inlay_hint.enable(true)
+
+-- Without this control c has a delay for omnicomplete in sql files
+vim.g.omni_sql_no_default_maps = 1
