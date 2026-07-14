@@ -102,6 +102,9 @@ eval "$(pyenv init -)"
 # Go
 export PATH="$HOME/go/bin:$PATH"
 
+# C++ Compiler
+alias g++=g++-14
+
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
